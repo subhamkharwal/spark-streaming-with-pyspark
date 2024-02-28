@@ -2,3 +2,4 @@ data/*
 .ipynb_checkpoints/*
 archive_dir/*
 checkpoint_dir/*
+checkpoint_dir*/*

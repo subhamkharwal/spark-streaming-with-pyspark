@@ -5,6 +5,7 @@ from kafka import KafkaProducer, KafkaConsumer
 import time
 import random
 from device_events import generate_events
+import uuid
 
 __bootstrap_server = "ed-kafka:29092"
 
@@ -12,7 +13,7 @@ __bootstrap_server = "ed-kafka:29092"
 def post_to_kafka(data):
     print('data: '+ str(data))
     producer = KafkaProducer(bootstrap_servers=__bootstrap_server)
-    producer.send('devices', key=b'device', value=data)
+    producer.send('device-data', key=bytes(str(uuid.uuid4()), 'utf-8'), value=data)
     #producer.flush()
     producer.close()
     print("Posted to topic")
